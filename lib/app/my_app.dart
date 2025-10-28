@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           darkTheme: ThemeApp.darkTheme,
           themeMode: ThemeMode.system,
           localizationsDelegates: _getLocalizationsDelegate(),
-          title: 'Task App',
+          title: 'Field Visit App',
         ),
         const LoaderGW(),
       ],
