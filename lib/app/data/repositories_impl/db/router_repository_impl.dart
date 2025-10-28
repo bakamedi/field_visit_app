@@ -1,6 +1,7 @@
-import 'package:field_visit_app/app/domain/repositories/router/router_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../domain/repositories/router/router_repository.dart';
 
 class RouterRepositoryImpl extends RouterRepository {
   late GoRouter _router;

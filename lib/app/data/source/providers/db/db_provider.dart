@@ -1,32 +1,38 @@
+import 'package:field_visit_app/app/core/utils/directory_util.dart';
+import 'package:logger/logger.dart';
 import 'package:path/path.dart';
 import 'package:sembast/sembast.dart';
 
-import '../../../../core/utils/directory_util.dart';
-
 class DbProvider {
-  DbProvider({required DatabaseFactory databaseFactory})
-    : _databaseFactory = databaseFactory;
+  DbProvider({required DatabaseFactory databaseFactory, required Logger logger})
+    : _databaseFactory = databaseFactory,
+      _logger = logger;
   final DatabaseFactory _databaseFactory;
+  final Logger _logger;
+
   late Database _db;
 
   Database get db => _db;
 
   Future<void> connect() async {
-    final platformDir = await DirectoryUtil.appDocumentsDir;
-    final dbPath = join(platformDir.path, 'my_database.db');
-    _db = await _databaseFactory.openDatabase(
-      dbPath,
-      // codec: SembastCodec(
-      //   signature: 'my_codec',
-      //   codec: _EncripterCodec(
-      //     key: _key,
-      //     iv: _iv,
-      //   ),
-      // ),
-    );
+    try {
+      final platformDir = await DirectoryUtil.appDocumentsDir;
+      final dbPath = join(platformDir.path, 'my_database.db');
+      _db = await _databaseFactory.openDatabase(dbPath);
+      _logger.i('Database connected successfully');
+    } catch (e) {
+      _logger.e('Error connecting to database: $e');
+      rethrow;
+    }
   }
 
   Future<void> close() async {
-    await _db.close();
+    try {
+      await _db.close();
+      _logger.i('Database closed successfully');
+    } catch (e) {
+      _logger.e('Error closing database: $e');
+      rethrow;
+    }
   }
 }

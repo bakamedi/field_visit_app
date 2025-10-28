@@ -1,4 +1,4 @@
-import '../../../domain/repositories/db_repository.dart';
+import '../../../domain/repositories/db/db_repository.dart';
 import '../../source/providers/db/db_provider.dart';
 
 class DbRepositoryImpl extends DbRepository {

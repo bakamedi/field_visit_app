@@ -1,6 +1,5 @@
+import 'package:field_visit_app/app/domain/repositories/snackbar/snackbar_repository.dart';
 import 'package:flutter/material.dart';
-
-import '../../../domain/repositories/snackbar_repository.dart';
 
 class SnackbarRepositoryImpl extends SnackbarRepository {
   late BuildContext _context;

@@ -1,6 +1,6 @@
 import '../../../core/utils/global_names_key_storage_util.dart';
 import '../../../domain/models/preferences/preference_model.dart';
-import '../../../domain/repositories/user_preferences_repository.dart';
+import '../../../domain/repositories/user/user_preferences_repository.dart';
 import '../../source/providers/storage/storage_provider.dart';
 
 class UserPreferencesRepositoryImpl extends UserPreferencesRepository {

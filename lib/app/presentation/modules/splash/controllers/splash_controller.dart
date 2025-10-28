@@ -3,7 +3,7 @@ import 'package:field_visit_app/app/presentation/router/app_routes/select_role_r
 import 'package:flutter_meedu/providers.dart';
 import 'package:flutter_meedu/notifiers.dart';
 
-import '../../../../domain/repositories/db_repository.dart';
+import '../../../../domain/repositories/db/db_repository.dart';
 import 'splash_state.dart';
 
 final splashProvider = Provider.state<SplashController, SplashState>(
