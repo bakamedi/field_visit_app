@@ -61,10 +61,7 @@ class RoleCardW extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                Text(
-                  subtitle,
-                  style: const TextStyle(fontSize: 13, color: Colors.black54),
-                ),
+                Text(subtitle, style: const TextStyle(fontSize: 13)),
               ],
             ).expanded,
             8.w,

@@ -20,6 +20,8 @@ class TechnicianBodyW extends StatelessWidget {
       );
     }
 
+    final cardColor = Theme.of(context).colorScheme.surface;
+
     return ListView.separated(
       padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 120),
       itemCount: events.length,
@@ -31,7 +33,7 @@ class TechnicianBodyW extends StatelessWidget {
 
         return Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: cardColor,
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(

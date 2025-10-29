@@ -17,12 +17,7 @@ class DetailView extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Detalle'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black87,
-        elevation: 0,
-      ),
+      appBar: AppBar(title: const Text('Detalle'), elevation: 0),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -47,7 +42,6 @@ class DetailView extends StatelessWidget {
             ),
         ],
       ).padding(const EdgeInsets.all(16)),
-      backgroundColor: Colors.white,
     );
   }
 
@@ -55,7 +49,7 @@ class DetailView extends StatelessWidget {
     return Row(
       children: [
         Text('$label: ', style: const TextStyle(fontWeight: FontWeight.bold)),
-        Text(value ?? '-', style: const TextStyle(color: Colors.black87)),
+        Text(value ?? '-'),
       ],
     ).padding(const EdgeInsets.symmetric(vertical: 4));
   }

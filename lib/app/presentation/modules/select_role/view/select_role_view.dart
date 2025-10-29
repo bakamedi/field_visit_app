@@ -10,8 +10,6 @@ class SelectRoleView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, BuilderRef ref) {
-    final theme = Theme.of(context);
-
     final selectRoleController = ref.watch(selectRoleProvider);
     final roles = selectRoleController.state.roles;
 
@@ -20,7 +18,6 @@ class SelectRoleView extends ConsumerWidget {
         title: const Text('Selecciona tu perfil'),
         elevation: 0,
         backgroundColor: Colors.transparent,
-        foregroundColor: theme.colorScheme.onSecondary,
         centerTitle: true,
       ),
       body: SafeArea(
@@ -32,7 +29,7 @@ class SelectRoleView extends ConsumerWidget {
             const Text(
               'Elige cómo deseas ingresar a la aplicación',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.black87),
+              style: TextStyle(fontSize: 16),
             ),
             28.h,
 
@@ -59,7 +56,7 @@ class SelectRoleView extends ConsumerWidget {
             Text(
               'Si necesitas cambiar de perfil más tarde, podrás hacerlo desde la configuración.',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+              style: TextStyle(fontSize: 12),
             ),
             8.h,
           ],
