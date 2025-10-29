@@ -55,3 +55,7 @@ final class TimeoutFailure extends Failure {
 final class StorageFailure extends Failure {
   const StorageFailure(super.message);
 }
+
+final class PermissionFailure extends Failure {
+  const PermissionFailure(super.message);
+}

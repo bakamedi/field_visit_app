@@ -1,4 +1,8 @@
+import 'package:field_visit_app/app/core/defs/type_defs.dart';
+import 'package:field_visit_app/app/core/helpers/either/either.dart';
+import 'package:field_visit_app/app/core/helpers/failure.dart';
 import 'package:field_visit_app/app/domain/inject_repository.dart';
+import 'package:field_visit_app/app/domain/models/success.dart';
 import 'package:field_visit_app/app/domain/repositories/index_repositories.dart';
 import 'package:field_visit_app/app/presentation/modules/technician/controller/technician_state.dart';
 import 'package:flutter_meedu/providers.dart';
@@ -25,12 +29,16 @@ class TechnicianController extends StateNotifier<TechnicianState> {
   final PermissionRepository _permissionRepository;
   final UserRepository _userRepository;
 
-  Future<void> checkPermission() async {
+  FutureEither<Failure, Result> checkPermission() async {
     final cameraGranted = await _permissionRepository.requestPermission(
       Permission.camera,
     );
+    if (!cameraGranted) {
+      return Either.left(PermissionFailure('Permiso de cámara denegado'));
+    }
     await _userRepository.updatePermission(
       resultsPermission: {'camera': cameraGranted},
     );
+    return Either.right(const Success());
   }
 }

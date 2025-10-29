@@ -54,5 +54,10 @@ FailureViewData mapFailureToView(Failure failure) {
         message: failure.message,
         errorCode: eCode,
       );
+    case PermissionFailure():
+      return FailureViewData(
+        icon: Icons.error_outline,
+        message: failure.message,
+      );
   }
 }

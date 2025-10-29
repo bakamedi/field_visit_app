@@ -1,8 +1,8 @@
+import 'package:field_visit_app/app/core/defs/type_defs.dart';
+import 'package:field_visit_app/app/data/source/providers/db/db_provider.dart';
+import 'package:field_visit_app/app/domain/defs/type_defs.dart' hide Json;
 import 'package:logger/logger.dart';
 import 'package:sembast/sembast.dart';
-
-import '../../../../domain/defs/type_defs.dart';
-import '../db/db_provider.dart';
 
 class StoreProvider {
   StoreProvider({
