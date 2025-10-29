@@ -53,6 +53,7 @@ class QrScanController extends StateNotifier<QrScanState> {
 
   void scanData(String? data) {
     state.mobileScannerController!.pause();
+    state = state.copyWith(scannedData: data);
   }
 
   FutureEither<Failure, Result> createEvent({

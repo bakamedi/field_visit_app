@@ -35,7 +35,7 @@ class DetailView extends StatelessWidget {
             MapThumbnailGW(
               lat: item.lat!,
               lng: item.lng!,
-              height: 250,
+              height: 500,
               iconMarkerSize: 36,
               markerHeight: 40,
               markerWidth: 40,

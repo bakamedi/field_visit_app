@@ -1,7 +1,6 @@
 import 'package:field_visit_app/app/domain/models/items/item_model.dart';
 import 'package:field_visit_app/app/presentation/global/extensions/strings_ext.dart';
 import 'package:field_visit_app/app/presentation/global/extensions/widgets_ext.dart';
-import 'package:field_visit_app/app/presentation/global/widgets/custom/maps_gw.dart';
 import 'package:field_visit_app/app/presentation/modules/technician/utils/go_detail.dart';
 import 'package:flutter/material.dart';
 
@@ -65,11 +64,6 @@ class TechnicianBodyW extends StatelessWidget {
                   style: const TextStyle(color: Colors.grey, fontSize: 14),
                 ),
               ),
-              if (event.lat != null && event.lng != null)
-                MapThumbnailGW(
-                  lat: event.lat!,
-                  lng: event.lng!,
-                ).padding(const EdgeInsets.only(top: 8)),
             ],
           ).padding(const EdgeInsets.all(12)),
         );

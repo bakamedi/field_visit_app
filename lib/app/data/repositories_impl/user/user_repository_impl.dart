@@ -79,4 +79,18 @@ class UserRepositoryImpl extends UserRepository {
       );
     }
   }
+
+  @override
+  FutureEither<FailureViewData, Result> updateUser(StoredUserModel user) async {
+    try {
+      await _storageProvider.writeValue(_storageName, userToJson(user));
+      return const Either.right(Success());
+    } catch (e) {
+      return Either.left(
+        mapFailureToView(
+          const StorageFailure('No se pudo actualizar el usuario'),
+        ),
+      );
+    }
+  }
 }

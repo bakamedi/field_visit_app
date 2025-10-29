@@ -1,6 +1,6 @@
 import 'package:field_visit_app/app/domain/inject_repository.dart';
 import 'package:field_visit_app/app/domain/repositories/index_repositories.dart';
-import 'package:field_visit_app/app/presentation/global/utils/uuid_util.dart';
+import 'package:field_visit_app/app/presentation/global/extensions/stored_user_ext.dart';
 import 'package:field_visit_app/app/presentation/modules/select_role/controller/select_role_state.dart';
 import 'package:field_visit_app/app/presentation/modules/select_role/utils/select_role_model.dart';
 import 'package:field_visit_app/app/presentation/router/app_routes/supervisor_route.dart';
@@ -30,7 +30,7 @@ class SelectRoleController extends StateNotifier<SelectRoleState> {
   void _onInit() {
     final roles = [
       SelectRoleModel(
-        id: UuidUtil.generateUuid(),
+        id: '1',
         title: 'Técnico Bakke',
         subTitle: 'Accede a tus visitas y herramientas de campo',
         iconData: Icons.build,
@@ -38,7 +38,7 @@ class SelectRoleController extends StateNotifier<SelectRoleState> {
         routeName: TechnicianRoute.path,
       ),
       SelectRoleModel(
-        id: UuidUtil.generateUuid(),
+        id: '2',
         title: 'Técnico Andrés',
         subTitle: 'Accede a tus visitas y herramientas de campo',
         iconData: Icons.build,
@@ -46,7 +46,7 @@ class SelectRoleController extends StateNotifier<SelectRoleState> {
         routeName: TechnicianRoute.path,
       ),
       SelectRoleModel(
-        id: UuidUtil.generateUuid(),
+        id: '3',
         title: 'Supervisor',
         subTitle: 'Revisa reportes y asigna tareas',
         iconData: Icons.supervisor_account,
@@ -92,10 +92,15 @@ class SelectRoleController extends StateNotifier<SelectRoleState> {
   void setSelectedRoleNull() async {
     final user = await _userRepository.getUser();
     final updUser = user.copyWith(
+      id: state.selectedRole!.id,
       role: state.selectedRole!.role,
       routeName: state.selectedRole!.routeName,
     );
-    await _userRepository.saveUser(updUser);
+    if (user.isEmpty) {
+      await _userRepository.saveUser(updUser);
+    } else {
+      await _userRepository.updateUser(updUser);
+    }
   }
 
   bool get enabledContinueButton => state.roles.any((role) => role.isSelected);

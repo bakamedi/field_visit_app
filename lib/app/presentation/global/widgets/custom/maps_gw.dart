@@ -25,21 +25,20 @@ class MapThumbnailGW extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(12),
       child: SizedBox(
-        height: 120,
+        height: height,
         child: FlutterMap(
           options: MapOptions(
             initialCenter: LatLng(lat, lng),
             initialZoom: 14,
             interactionOptions: const InteractionOptions(
-              flags: InteractiveFlag.none, // 🔒 Desactiva zoom/movimiento
+              flags: InteractiveFlag.none,
             ),
           ),
           children: [
             TileLayer(
               urlTemplate:
                   'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png',
-              subdomains: const ['a', 'b', 'c'],
-              userAgentPackageName: 'com.example.app',
+              userAgentPackageName: 'com.example.field_visit_app',
             ),
             MarkerLayer(
               markers: [

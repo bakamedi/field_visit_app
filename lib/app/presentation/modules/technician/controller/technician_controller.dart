@@ -11,13 +11,13 @@ import 'package:permission_handler/permission_handler.dart';
 
 final technicianProvider =
     Provider.state<TechnicianController, TechnicianState>(
-  (_) => TechnicianController(
-    TechnicianState.initialState,
-    permissionRepository: Repositories.permissionRep.read(),
-    userRepository: Repositories.userRep.read(),
-    eventRepository: Repositories.eventRep.read(),
-  ),
-);
+      (_) => TechnicianController(
+        TechnicianState.initialState,
+        permissionRepository: Repositories.permissionRep.read(),
+        userRepository: Repositories.userRep.read(),
+        eventRepository: Repositories.eventRep.read(),
+      ),
+    );
 
 class TechnicianController extends StateNotifier<TechnicianState> {
   TechnicianController(
@@ -25,9 +25,9 @@ class TechnicianController extends StateNotifier<TechnicianState> {
     required PermissionRepository permissionRepository,
     required UserRepository userRepository,
     required EventRepository eventRepository,
-  })  : _permissionRepository = permissionRepository,
-        _userRepository = userRepository,
-        _eventRepository = eventRepository {
+  }) : _permissionRepository = permissionRepository,
+       _userRepository = userRepository,
+       _eventRepository = eventRepository {
     init();
   }
 
@@ -42,7 +42,8 @@ class TechnicianController extends StateNotifier<TechnicianState> {
 
   Future<void> loadEvents() async {
     state = state.copyWith(loading: true);
-    final events = await _eventRepository.getAll();
+    final user = await _userRepository.getUser();
+    final events = await _eventRepository.getEventsByUser(user.id);
     state = state.copyWith(events: events, loading: false);
   }
 
