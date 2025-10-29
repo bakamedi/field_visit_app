@@ -11,25 +11,40 @@ import 'package:permission_handler/permission_handler.dart';
 
 final technicianProvider =
     Provider.state<TechnicianController, TechnicianState>(
-      (_) => TechnicianController(
-        TechnicianState.initialState,
-        permissionRepository: Repositories.permissionRep.read(),
-        userRepository: Repositories.userRep.read(),
-      ),
-    );
+  (_) => TechnicianController(
+    TechnicianState.initialState,
+    permissionRepository: Repositories.permissionRep.read(),
+    userRepository: Repositories.userRep.read(),
+    eventRepository: Repositories.eventRep.read(),
+  ),
+);
 
 class TechnicianController extends StateNotifier<TechnicianState> {
   TechnicianController(
     super.initialState, {
     required PermissionRepository permissionRepository,
     required UserRepository userRepository,
-  }) : _permissionRepository = permissionRepository,
-       _userRepository = userRepository {
-    checkLocationPermission();
+    required EventRepository eventRepository,
+  })  : _permissionRepository = permissionRepository,
+        _userRepository = userRepository,
+        _eventRepository = eventRepository {
+    init();
   }
 
   final PermissionRepository _permissionRepository;
   final UserRepository _userRepository;
+  final EventRepository _eventRepository;
+
+  Future<void> init() async {
+    await checkLocationPermission();
+    await loadEvents();
+  }
+
+  Future<void> loadEvents() async {
+    state = state.copyWith(loading: true);
+    final events = await _eventRepository.getAll();
+    state = state.copyWith(events: events, loading: false);
+  }
 
   FutureEither<Failure, Result> checkCameraPermission() async {
     final cameraGranted = await _permissionRepository.requestPermission(

@@ -1,7 +1,6 @@
+import 'package:field_visit_app/app/presentation/global/widgets/custom/maps_gw.dart';
 import 'package:field_visit_app/app/presentation/modules/detail/controller/detail_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
 
 class DetailView extends StatelessWidget {
   const DetailView({super.key});
@@ -33,35 +32,13 @@ class DetailView extends StatelessWidget {
 
             // Mapa minimalista
             if (item.lat != null && item.lng != null)
-              SizedBox(
+              MapThumbnailGW(
+                lat: item.lat!,
+                lng: item.lng!,
                 height: 250,
-                child: FlutterMap(
-                  options: MapOptions(
-                    initialCenter: LatLng(item.lat!, item.lng!),
-                    initialZoom: 14,
-                  ),
-                  children: [
-                    TileLayer(
-                      urlTemplate:
-                          'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                      subdomains: const ['a', 'b', 'c'],
-                    ),
-                    MarkerLayer(
-                      markers: [
-                        Marker(
-                          point: LatLng(item.lat!, item.lng!),
-                          width: 40,
-                          height: 40,
-                          child: const Icon(
-                            Icons.location_on,
-                            color: Colors.red,
-                            size: 36,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                iconMarkerSize: 36,
+                markerHeight: 40,
+                markerWidth: 40,
               )
             else
               const Text(

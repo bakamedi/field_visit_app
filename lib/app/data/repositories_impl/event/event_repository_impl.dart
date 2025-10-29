@@ -16,8 +16,6 @@ class EventRepositoryImpl extends EventRepository {
   @override
   Future<List<ItemModel>> getAll() async {
     final result = await _storeProvider.getAllRecords();
-    return result
-        .map((e) => ItemModel.fromJson(e as Map<String, dynamic>))
-        .toList();
+    return result.map((e) => ItemModel.fromJson(e.value)).toList();
   }
 }

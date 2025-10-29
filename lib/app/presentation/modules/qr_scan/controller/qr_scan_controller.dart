@@ -62,6 +62,7 @@ class QrScanController extends StateNotifier<QrScanState> {
     try {
       final user = await _userRepository.getUser();
       final event = ItemModel(
+        code: state.scannedData,
         lat: lat,
         lng: lng,
         userId: user.id,

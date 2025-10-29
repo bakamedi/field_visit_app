@@ -8,6 +8,7 @@ abstract class QrScanState with _$QrScanState {
   const QrScanState._();
 
   const factory QrScanState({
+    String? scannedData,
     MobileScannerController? mobileScannerController,
   }) = _QrScanState;
 
