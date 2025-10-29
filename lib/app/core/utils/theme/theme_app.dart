@@ -1,3 +1,4 @@
+import 'package:field_visit_app/app/core/utils/theme/button_theme_app.dart';
 import 'package:flutter/material.dart';
 import 'dark_colors.dart';
 import 'light_colors.dart';
@@ -8,65 +9,69 @@ class ThemeApp {
   ThemeApp._();
   static final ThemeApp _instance = ThemeApp._();
 
-  /// Accede al tema oscuro personalizado
-  static ThemeData get darkTheme {
-    return ThemeData(
-      fontFamily: 'Manrope',
-      brightness: Brightness.dark,
-      scaffoldBackgroundColor: DarkColors.darkBackground,
-      primaryColor: DarkColors.darkPrimary,
-      colorScheme: const ColorScheme.dark(
-        surface: DarkColors.darkSurface,
-        onSurface: DarkColors.darkOnSurface,
-        primary: DarkColors.darkPrimary,
-        onPrimary: DarkColors.darkOnPrimary,
-        secondary: DarkColors.darkSecondary,
-        onSecondary: DarkColors.darkOnSecondary,
-        error: DarkColors.darkError,
-        onError: DarkColors.darkOnError,
-      ),
-      // tabBarTheme: const TabBarTheme(
-      //   labelColor: DarkColors.darkOnSurface,
-      //   indicatorSize: TabBarIndicatorSize.label,
-      //   indicatorColor: DarkColors.darkPrimary,
-      // ),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: DarkColors.darkSurface,
-        foregroundColor: DarkColors.darkOnSurface,
-        elevation: 0,
-      ),
-      textTheme: const TextTheme(
-        bodyLarge: TextStyle(color: DarkColors.darkOnBackground),
-        bodyMedium: TextStyle(color: DarkColors.darkOnSurface),
-      ),
-      cardColor: DarkColors.darkSurface,
-    );
-  }
+  // Instancias de colores (no estáticos)
+  static final _light = LightColors();
+  static final _dark = DarkColors();
 
+  /// Tema oscuro personalizado
+  static ThemeData get darkTheme => ThemeData(
+    fontFamily: 'Manrope',
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: _dark.background,
+    primaryColor: _dark.primary,
+    elevatedButtonTheme: ButtonThemeApp.elevatedButtonThemeData(_dark),
+    textButtonTheme: ButtonThemeApp.textButtonThemeData(_dark),
+    outlinedButtonTheme: ButtonThemeApp.outlinedButtonThemeData(_dark),
+    colorScheme: ColorScheme.dark(
+      surface: _dark.surface,
+      onSurface: _dark.onSurface,
+      primary: _dark.primary,
+      onPrimary: _dark.onPrimary,
+      secondary: _dark.secondary,
+      onSecondary: _dark.onSecondary,
+      error: _dark.error,
+      onError: _dark.onError,
+    ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: _dark.surface,
+      foregroundColor: _dark.onSurface,
+      elevation: 0,
+    ),
+    textTheme: TextTheme(
+      bodyLarge: TextStyle(color: _dark.onBackground),
+      bodyMedium: TextStyle(color: _dark.onSurface),
+    ),
+    cardColor: _dark.surface,
+  );
+
+  /// Tema claro personalizado
   static ThemeData get lightTheme => ThemeData(
     fontFamily: 'Manrope',
     brightness: Brightness.light,
-    scaffoldBackgroundColor: LightColors.lightBackground,
-    primaryColor: LightColors.lightPrimary,
-    colorScheme: const ColorScheme.light(
-      surface: LightColors.lightSurface,
-      onSurface: LightColors.lightOnSurface,
-      primary: LightColors.lightPrimary,
-      onPrimary: LightColors.lightOnPrimary,
-      secondary: LightColors.lightSecondary,
-      onSecondary: LightColors.lightOnSecondary,
-      error: LightColors.lightError,
-      onError: LightColors.lightOnError,
+    scaffoldBackgroundColor: _light.background,
+    primaryColor: _light.primary,
+    elevatedButtonTheme: ButtonThemeApp.elevatedButtonThemeData(_light),
+    textButtonTheme: ButtonThemeApp.textButtonThemeData(_light),
+    outlinedButtonTheme: ButtonThemeApp.outlinedButtonThemeData(_light),
+    colorScheme: ColorScheme.light(
+      surface: _light.surface,
+      onSurface: _light.onSurface,
+      primary: _light.primary,
+      onPrimary: _light.onPrimary,
+      secondary: _light.secondary,
+      onSecondary: _light.onSecondary,
+      error: _light.error,
+      onError: _light.onError,
     ),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: LightColors.lightSurface,
-      foregroundColor: LightColors.lightOnSurface,
+    appBarTheme: AppBarTheme(
+      backgroundColor: _light.surface,
+      foregroundColor: _light.onSurface,
       elevation: 0,
     ),
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(color: LightColors.lightOnBackground),
-      bodyMedium: TextStyle(color: LightColors.lightOnSurface),
+    textTheme: TextTheme(
+      bodyLarge: TextStyle(color: _light.onBackground),
+      bodyMedium: TextStyle(color: _light.onSurface),
     ),
-    cardColor: LightColors.lightSurface,
+    cardColor: _light.surface,
   );
 }

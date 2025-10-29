@@ -1,29 +1,34 @@
 import 'dart:ui';
+import 'package:field_visit_app/app/core/utils/theme/base_color.dart';
 
-abstract class DarkColors {
-  // Fondo general de la app
-  static const Color darkBackground = Color(
-    0xFF181818,
-  ); // gris oscuro más suave que #121212
-  static const Color darkOnBackground = Color(0xFFE0E0E0); // texto principal
+class DarkColors extends BaseColor {
+  @override
+  Color get background => const Color(0xFF181818);
 
-  // Superficies como cards, sheets, etc.
-  static const Color darkSurface = Color(0xFF1E1E1E);
-  static const Color darkOnSurface = Color(0xFFCCCCCC); // texto secundario
+  @override
+  Color get onBackground => const Color(0xFFE0E0E0);
 
-  // Primario (puede ser acento, botones, etc.)
-  static const Color darkPrimary = Color(
-    0xFFBB86FC,
-  ); // Material Design recomendado
-  static const Color darkOnPrimary = Color(
-    0xFF000000,
-  ); // texto en botón primario
+  @override
+  Color get surface => const Color(0xFF1E1E1E);
 
-  // Secundario (menos uso que primario)
-  static const Color darkSecondary = Color(0xFF03DAC6);
-  static const Color darkOnSecondary = Color(0xFF000000);
+  @override
+  Color get onSurface => const Color(0xFFCCCCCC);
 
-  // Errores
-  static const Color darkError = Color(0xFFCF6679);
-  static const Color darkOnError = Color(0xFF000000);
+  @override
+  Color get primary => const Color(0xFFBB86FC);
+
+  @override
+  Color get onPrimary => const Color(0xFF000000);
+
+  @override
+  Color get secondary => const Color(0xFF03DAC6);
+
+  @override
+  Color get onSecondary => const Color(0xFF000000);
+
+  @override
+  Color get error => const Color(0xFFCF6679);
+
+  @override
+  Color get onError => const Color(0xFF000000);
 }
