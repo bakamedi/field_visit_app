@@ -1,3 +1,5 @@
+import 'package:field_visit_app/app/presentation/global/extensions/strings_ext.dart';
+import 'package:field_visit_app/app/presentation/global/extensions/widgets_ext.dart';
 import 'package:field_visit_app/app/presentation/global/widgets/custom/maps_gw.dart';
 import 'package:field_visit_app/app/presentation/modules/detail/controller/detail_controller.dart';
 import 'package:flutter/material.dart';
@@ -21,46 +23,40 @@ class DetailView extends StatelessWidget {
         foregroundColor: Colors.black87,
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildRow('Código', 'code'),
-            _buildRow('Fecha', 'createdAt?.toString()'),
-            const SizedBox(height: 20),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildRow('Código', item.code),
+          _buildRow('Fecha', item.createdAt?.toString().getFormattedDate()),
+          20.h,
 
-            // Mapa minimalista
-            if (item.lat != null && item.lng != null)
-              MapThumbnailGW(
-                lat: item.lat!,
-                lng: item.lng!,
-                height: 250,
-                iconMarkerSize: 36,
-                markerHeight: 40,
-                markerWidth: 40,
-              )
-            else
-              const Text(
-                'No hay coordenadas disponibles',
-                style: TextStyle(color: Colors.grey),
-              ),
-          ],
-        ),
-      ),
+          // Mapa minimalista
+          if (item.lat != null && item.lng != null)
+            MapThumbnailGW(
+              lat: item.lat!,
+              lng: item.lng!,
+              height: 250,
+              iconMarkerSize: 36,
+              markerHeight: 40,
+              markerWidth: 40,
+            )
+          else
+            const Text(
+              'No hay coordenadas disponibles',
+              style: TextStyle(color: Colors.grey),
+            ),
+        ],
+      ).padding(const EdgeInsets.all(16)),
       backgroundColor: Colors.white,
     );
   }
 
   Widget _buildRow(String label, String? value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        children: [
-          Text('$label: ', style: const TextStyle(fontWeight: FontWeight.bold)),
-          Text(value ?? '-', style: const TextStyle(color: Colors.black87)),
-        ],
-      ),
-    );
+    return Row(
+      children: [
+        Text('$label: ', style: const TextStyle(fontWeight: FontWeight.bold)),
+        Text(value ?? '-', style: const TextStyle(color: Colors.black87)),
+      ],
+    ).padding(const EdgeInsets.symmetric(vertical: 4));
   }
 }
