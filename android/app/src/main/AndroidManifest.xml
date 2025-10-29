@@ -1,4 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--Permisos generales -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!--Permisos para ubicación -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!--Permisos para cámara -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!--Otros permisos -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    
     <application
         android:label="field_visit_app"
         android:name="${applicationName}"

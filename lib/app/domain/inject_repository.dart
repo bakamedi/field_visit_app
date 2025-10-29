@@ -25,4 +25,8 @@ class Repositories {
       storageProvider: StorageInjectProvider.storageInjectProvider.read(),
     ),
   );
+
+  static final permissionRep = Provider<PermissionRepository>(
+    (ref) => const PermissionRepositoryImpl(),
+  );
 }
