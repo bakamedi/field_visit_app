@@ -23,6 +23,7 @@ class RoleCardW extends StatelessWidget {
       onTap: onTap,
       child: Card(
         elevation: 2,
+        margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
           side: BorderSide(
@@ -76,7 +77,7 @@ class RoleCardW extends StatelessWidget {
                       color: Theme.of(context).colorScheme.primary,
                     ),
                   )
-                : const SizedBox.shrink(),
+                : const SizedBox(width: 28, height: 28),
           ],
         ).padding(const EdgeInsets.all(16.0)),
       ),
