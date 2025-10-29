@@ -59,5 +59,10 @@ FailureViewData mapFailureToView(Failure failure) {
         icon: Icons.error_outline,
         message: failure.message,
       );
+    case GeolocatorFailure():
+      return FailureViewData(
+        icon: Icons.map_outlined,
+        message: failure.message,
+      );
   }
 }

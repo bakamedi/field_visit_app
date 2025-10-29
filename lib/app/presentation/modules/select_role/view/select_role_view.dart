@@ -67,7 +67,12 @@ class SelectRoleView extends ConsumerWidget {
       ),
       bottomNavigationBar: SafeArea(
         bottom: true,
-        minimum: const EdgeInsets.all(16),
+        minimum: const EdgeInsets.only(
+          top: 16,
+          bottom: 80,
+          left: 20,
+          right: 20,
+        ),
         child: SizedBox(
           height: 52,
           child: ElevatedButton(

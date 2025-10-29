@@ -2,8 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer.dart';
 
-import '../../../../core/adaptative_screen/adaptative_screen.dart';
-import '../../controllers/loader/loader_gc.dart';
+import '../../../../../core/adaptative_screen/adaptative_screen.dart';
+import '../../../../../presentation/global/controllers/loader/loader_gc.dart';
 
 class LoaderGW extends ConsumerWidget {
   const LoaderGW({super.key});

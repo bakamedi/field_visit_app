@@ -7,13 +7,10 @@ import 'package:field_visit_app/app/presentation/router/app_routes/qr_scan_route
 void goQr() async {
   final TechnicianController technicianController = technicianProvider.read();
 
-  final result = await technicianController.checkPermission();
+  final result = await technicianController.checkCameraPermission();
 
   result.map(
-    left: (failure) {
-      SnackbarUtil.showError(failure.value.message);
-    },
-
+    left: (failure) => SnackbarUtil.showError(failure.value.message),
     right: (success) {
       RouterUtil.push(QrScanRoute.path);
     },

@@ -36,4 +36,8 @@ class Repositories {
       storageName: 'stored_user',
     ),
   );
+
+  static final geolocationRep = Provider<GeolocationRepository>(
+    (ref) => GeolocationRepositoryImpl(),
+  );
 }

@@ -24,12 +24,14 @@ class TechnicianController extends StateNotifier<TechnicianState> {
     required PermissionRepository permissionRepository,
     required UserRepository userRepository,
   }) : _permissionRepository = permissionRepository,
-       _userRepository = userRepository;
+       _userRepository = userRepository {
+    checkLocationPermission();
+  }
 
   final PermissionRepository _permissionRepository;
   final UserRepository _userRepository;
 
-  FutureEither<Failure, Result> checkPermission() async {
+  FutureEither<Failure, Result> checkCameraPermission() async {
     final cameraGranted = await _permissionRepository.requestPermission(
       Permission.camera,
     );
@@ -38,6 +40,19 @@ class TechnicianController extends StateNotifier<TechnicianState> {
     }
     await _userRepository.updatePermission(
       resultsPermission: {'camera': cameraGranted},
+    );
+    return Either.right(const Success());
+  }
+
+  FutureEither<Failure, Result> checkLocationPermission() async {
+    final cameraGranted = await _permissionRepository.requestPermission(
+      Permission.locationWhenInUse,
+    );
+    if (!cameraGranted) {
+      return Either.left(PermissionFailure('Permiso de location denegado'));
+    }
+    await _userRepository.updatePermission(
+      resultsPermission: {'location': cameraGranted},
     );
     return Either.right(const Success());
   }
