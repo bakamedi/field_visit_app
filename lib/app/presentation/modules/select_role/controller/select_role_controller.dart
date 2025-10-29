@@ -89,7 +89,7 @@ class SelectRoleController extends StateNotifier<SelectRoleState> {
     state = state.copyWith(roles: updatedRoles, selectedRole: role);
   }
 
-  void setSelectedRoleNull() async {
+  Future<void> setSelectedRoleNull() async {
     final user = await _userRepository.getUser();
     final updUser = user.copyWith(
       id: state.selectedRole!.id,
