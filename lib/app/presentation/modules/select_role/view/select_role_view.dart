@@ -1,5 +1,6 @@
 import 'package:field_visit_app/app/presentation/global/extensions/widgets_ext.dart';
 import 'package:field_visit_app/app/presentation/modules/select_role/controller/select_role_controller.dart';
+import 'package:field_visit_app/app/presentation/modules/select_role/utils/go_home.dart';
 import 'package:field_visit_app/app/presentation/modules/select_role/view/widgets/role_card_w.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer.dart';
@@ -71,7 +72,7 @@ class SelectRoleView extends ConsumerWidget {
           height: 52,
           child: ElevatedButton(
             onPressed: selectRoleController.enabledContinueButton
-                ? () {}
+                ? goHome
                 : null,
             style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(

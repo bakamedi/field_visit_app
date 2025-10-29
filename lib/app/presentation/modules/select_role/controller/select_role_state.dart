@@ -7,8 +7,10 @@ part 'select_role_state.freezed.dart';
 abstract class SelectRoleState with _$SelectRoleState {
   const SelectRoleState._();
 
-  const factory SelectRoleState({@Default([]) List<SelectRoleModel> roles}) =
-      _SelectRoleState;
+  const factory SelectRoleState({
+    @Default([]) List<SelectRoleModel> roles,
+    SelectRoleModel? selectedRole,
+  }) = _SelectRoleState;
 
   static SelectRoleState get initialState => const SelectRoleState(roles: []);
 }
