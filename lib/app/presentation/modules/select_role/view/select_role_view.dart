@@ -2,14 +2,9 @@ import 'package:field_visit_app/app/presentation/global/extensions/widgets_ext.d
 import 'package:field_visit_app/app/presentation/modules/select_role/view/widgets/role_card_w.dart';
 import 'package:flutter/material.dart';
 
-class SelectRoleView extends StatefulWidget {
+class SelectRoleView extends StatelessWidget {
   const SelectRoleView({super.key});
 
-  @override
-  State<SelectRoleView> createState() => _SelectRoleViewState();
-}
-
-class _SelectRoleViewState extends State<SelectRoleView> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

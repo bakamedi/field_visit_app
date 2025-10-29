@@ -19,6 +19,36 @@ class SplashView extends ConsumerWidget {
         }
       },
     );
-    return Scaffold(body: CircularProgressIndicator.adaptive().center);
+
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const FlutterLogo(size: 84),
+              16.h,
+              Text(
+                'Field Visit',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
+                semanticsLabel: 'Nombre de la aplicación',
+              ),
+              8.h,
+              Text(
+                'Cargando…',
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
+                semanticsLabel: 'Indicador de carga',
+              ),
+              20.h,
+              const CircularProgressIndicator.adaptive(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
