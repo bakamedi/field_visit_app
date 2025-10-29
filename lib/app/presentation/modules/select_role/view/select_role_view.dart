@@ -1,13 +1,18 @@
 import 'package:field_visit_app/app/presentation/global/extensions/widgets_ext.dart';
+import 'package:field_visit_app/app/presentation/modules/select_role/controller/select_role_controller.dart';
 import 'package:field_visit_app/app/presentation/modules/select_role/view/widgets/role_card_w.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_meedu/consumer.dart';
 
-class SelectRoleView extends StatelessWidget {
+class SelectRoleView extends ConsumerWidget {
   const SelectRoleView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, BuilderRef ref) {
     final theme = Theme.of(context);
+
+    final selectRoleController = ref.watch(selectRoleProvider);
+    final roles = selectRoleController.state.roles;
 
     return Scaffold(
       appBar: AppBar(
@@ -30,26 +35,23 @@ class SelectRoleView extends StatelessWidget {
             ),
             28.h,
 
-            GestureDetector(
-              onTap: () {},
-              child: RoleCardW(
-                icon: Icons.build,
-                title: 'Técnico',
-                subtitle: 'Accede a tus visitas y herramientas de campo',
-                buttonLabel: '',
-                onTap: () {},
-              ),
-            ),
-            16.h,
-            GestureDetector(
-              onTap: () {},
-              child: RoleCardW(
-                icon: Icons.supervisor_account,
-                title: 'Supervisor',
-                subtitle: 'Revisa reportes y asigna tareas',
-                buttonLabel: '',
-                onTap: () {},
-              ),
+            Column(
+              children: roles
+                  .map(
+                    (role) => Column(
+                      children: [
+                        RoleCardW(
+                          icon: role.iconData,
+                          title: role.title,
+                          subtitle: role.subTitle,
+                          isSelected: role.isSelected,
+                          onTap: () => selectRoleController.selectRole(role),
+                        ),
+                        16.h,
+                      ],
+                    ),
+                  )
+                  .toList(),
             ),
 
             const Spacer(),
@@ -68,7 +70,9 @@ class SelectRoleView extends StatelessWidget {
         child: SizedBox(
           height: 52,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: selectRoleController.enabledContinueButton
+                ? () {}
+                : null,
             style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),

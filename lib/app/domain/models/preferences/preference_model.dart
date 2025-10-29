@@ -15,9 +15,7 @@ String preferenceToJson(Preference data) => json.encode(data.toJson());
 
 @freezed
 abstract class Preference with _$Preference {
-  const factory Preference({
-    @JsonKey(name: "is_dark_mode") required bool isDarkMode,
-  }) = _Preference;
+  const factory Preference({required bool isDarkMode}) = _Preference;
 
   factory Preference.fromJson(Map<String, dynamic> json) =>
       _$PreferenceFromJson(json);
