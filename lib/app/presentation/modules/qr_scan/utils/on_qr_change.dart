@@ -13,11 +13,22 @@ void onQrChanged(String? data) async {
     left: (failure) {
       SnackbarUtil.showError(failure.message);
     },
-    right: (position) {
+    right: (position) async {
       controller.scanData(data);
-      print('QR Data: $data');
-      print('Location ${position?.latitude}, ${position?.longitude}');
+      final result = await controller.createEvent(
+        lat: position!.latitude,
+        lng: position.longitude,
+      );
       RouterUtil.pop();
+
+      result.when(
+        left: (failure) {
+          SnackbarUtil.showError(failure.message);
+        },
+        right: (success) {
+          SnackbarUtil.showSuccess('Event created successfully');
+        },
+      );
     },
   );
 }

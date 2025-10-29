@@ -1,6 +1,5 @@
 import 'package:field_visit_app/app/core/utils/theme/theme_app.dart';
 import 'package:field_visit_app/app/presentation/global/controllers/router/router_gc.dart';
-import 'package:field_visit_app/app/presentation/global/controllers/snackbar/snackbar_gc.dart';
 import 'package:field_visit_app/app/domain/repositories/snackbar/widgets/loader/loader_gw.dart';
 import 'package:field_visit_app/app/presentation/router/router_provider.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +11,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final routerController = routerGP.read();
-
-    final snackbarController = snackbarGP.read();
-
-    snackbarController.setContext(context);
 
     routerController.load(routerProvider.read());
 

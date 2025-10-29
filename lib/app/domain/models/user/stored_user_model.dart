@@ -15,6 +15,7 @@ abstract class StoredUserModel with _$StoredUserModel {
   const StoredUserModel._();
 
   const factory StoredUserModel({
+    @Default('') String id,
     @Default('') String routeName,
     @Default('') String role,
     required PermissionModel permission,
@@ -24,12 +25,14 @@ abstract class StoredUserModel with _$StoredUserModel {
       _$StoredUserModelFromJson(json);
 
   static StoredUserModel get initialState => StoredUserModel(
+    id: '',
     role: '',
     permission: PermissionModel.empty(),
     routeName: '',
   );
 
   static StoredUserModel empty() => StoredUserModel(
+    id: '',
     role: '',
     permission: PermissionModel.empty(),
     routeName: '',

@@ -5,11 +5,6 @@ class SnackbarRepositoryImpl extends SnackbarRepository {
   late BuildContext _context;
 
   @override
-  void showErrorSnackbar(String message) {
-    // TODO: implement showErrorSnackbar
-  }
-
-  @override
   void showSnackbar(String message) {
     ScaffoldMessenger.of(_context).showSnackBar(
       SnackBar(
@@ -21,11 +16,6 @@ class SnackbarRepositoryImpl extends SnackbarRepository {
         ),
       ),
     );
-  }
-
-  @override
-  void showSuccessSnackbar(String message) {
-    // TODO: implement showSuccessSnackbar
   }
 
   @override

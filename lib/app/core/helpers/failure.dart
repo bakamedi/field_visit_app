@@ -63,3 +63,7 @@ final class PermissionFailure extends Failure {
 final class GeolocatorFailure extends Failure {
   const GeolocatorFailure(super.message);
 }
+
+final class DatabaseFailure extends Failure {
+  const DatabaseFailure(super.message);
+}

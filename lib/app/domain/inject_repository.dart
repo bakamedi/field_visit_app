@@ -1,5 +1,6 @@
 import 'package:field_visit_app/app/core/injects_providers/db/db_inject_provider.dart';
 import 'package:field_visit_app/app/core/injects_providers/storage/storage_inject_provider.dart';
+import 'package:field_visit_app/app/core/injects_providers/store/store_inject_provider.dart';
 import 'package:field_visit_app/app/data/repositories_impl/index_repositories_impl.dart';
 import 'package:field_visit_app/app/domain/repositories/index_repositories.dart';
 import 'package:flutter_meedu/providers.dart';
@@ -39,5 +40,13 @@ class Repositories {
 
   static final geolocationRep = Provider<GeolocationRepository>(
     (ref) => GeolocationRepositoryImpl(),
+  );
+
+  static final eventRep = Provider<EventRepository>(
+    (ref) => EventRepositoryImpl(
+      storeProvider: StoreInjectProvider.storeInjectProvider(
+        storeName: 'events',
+      ).read(),
+    ),
   );
 }

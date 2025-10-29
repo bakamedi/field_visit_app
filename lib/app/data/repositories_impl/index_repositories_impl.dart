@@ -5,3 +5,4 @@ export 'user/user_preferences_repository_impl.dart';
 export 'permission/permission_repository_impl.dart';
 export 'user/user_repository_impl.dart';
 export 'geolocation/geolocation_repository_impl.dart';
+export 'event/event_repository_impl.dart';

@@ -1,3 +1,4 @@
+import 'package:field_visit_app/app/presentation/global/controllers/snackbar/snackbar_gc.dart';
 import 'package:field_visit_app/app/presentation/global/extensions/widgets_ext.dart';
 import 'package:field_visit_app/app/presentation/modules/technician/controller/technician_controller.dart';
 import 'package:field_visit_app/app/presentation/modules/technician/utils/go_qr.dart';
@@ -10,6 +11,10 @@ class TechnicianView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, BuilderRef ref) {
     final controller = ref.watch(technicianProvider);
+
+    final snackbarController = snackbarGP.read();
+
+    snackbarController.setContext(context);
     return Scaffold(
       appBar: AppBar(title: Text('Historial de Visitas')),
       body: Text('Tecnico View').center,

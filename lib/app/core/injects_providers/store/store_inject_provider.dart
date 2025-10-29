@@ -7,11 +7,15 @@ import '../loggers/logger_inject_provider.dart';
 class StoreInjectProvider {
   StoreInjectProvider._();
 
-  static final storeInjectProvider = Provider(
-    (ref) => StoreProvider(
-      dbProvider: DbInjectProvider.dbInjectProvider.read(),
-      storeName: 'my_store',
-      logger: LoggerInjectProvider.loggerInjectProvider.read(),
-    ),
-  );
+  static Provider<StoreProvider> storeInjectProvider({
+    required String storeName,
+  }) {
+    return Provider(
+      (ref) => StoreProvider(
+        dbProvider: DbInjectProvider.dbInjectProvider.read(),
+        storeName: storeName,
+        logger: LoggerInjectProvider.loggerInjectProvider.read(),
+      ),
+    );
+  }
 }

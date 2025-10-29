@@ -64,5 +64,10 @@ FailureViewData mapFailureToView(Failure failure) {
         icon: Icons.map_outlined,
         message: failure.message,
       );
+    case DatabaseFailure():
+      return FailureViewData(
+        icon: Icons.storage_outlined,
+        message: failure.message,
+      );
   }
 }
