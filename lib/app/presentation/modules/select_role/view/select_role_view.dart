@@ -23,54 +23,52 @@ class _SelectRoleViewState extends State<SelectRoleView> {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              12.h,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            12.h,
 
-              const Text(
-                'Elige cómo deseas ingresar a la aplicación',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, color: Colors.black87),
-              ),
-              28.h,
+            const Text(
+              'Elige cómo deseas ingresar a la aplicación',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16, color: Colors.black87),
+            ),
+            28.h,
 
-              GestureDetector(
+            GestureDetector(
+              onTap: () {},
+              child: RoleCardW(
+                icon: Icons.build,
+                title: 'Técnico',
+                subtitle: 'Accede a tus visitas y herramientas de campo',
+                buttonLabel: '',
                 onTap: () {},
-                child: RoleCardW(
-                  icon: Icons.build,
-                  title: 'Técnico',
-                  subtitle: 'Accede a tus visitas y herramientas de campo',
-                  buttonLabel: '',
-                  onTap: () {},
-                ),
               ),
-              16.h,
-              GestureDetector(
+            ),
+            16.h,
+            GestureDetector(
+              onTap: () {},
+              child: RoleCardW(
+                icon: Icons.supervisor_account,
+                title: 'Supervisor',
+                subtitle: 'Revisa reportes y asigna tareas',
+                buttonLabel: '',
                 onTap: () {},
-                child: RoleCardW(
-                  icon: Icons.supervisor_account,
-                  title: 'Supervisor',
-                  subtitle: 'Revisa reportes y asigna tareas',
-                  buttonLabel: '',
-                  onTap: () {},
-                ),
               ),
+            ),
 
-              const Spacer(),
-              Text(
-                'Si necesitas cambiar de perfil más tarde, podrás hacerlo desde la configuración.',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-              ),
-              8.h,
-            ],
-          ),
-        ),
+            const Spacer(),
+            Text(
+              'Si necesitas cambiar de perfil más tarde, podrás hacerlo desde la configuración.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+            ),
+            8.h,
+          ],
+        ).padding(const EdgeInsets.all(20)),
       ),
       bottomNavigationBar: SafeArea(
+        bottom: true,
         minimum: const EdgeInsets.all(16),
         child: SizedBox(
           height: 52,
@@ -86,7 +84,7 @@ class _SelectRoleViewState extends State<SelectRoleView> {
               //'Selecciona un perfil' : 'Ingresar',
             ),
           ),
-        ),
+        ).padding(EdgeInsets.symmetric(horizontal: 10)),
       ),
     );
   }
