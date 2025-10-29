@@ -13,9 +13,7 @@ class TechnicianView extends ConsumerWidget {
       appBar: AppBar(title: Text('Historial de Visitas')),
       body: Text('Tecnico View').center,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          controller.checkPermission();
-        },
+        onPressed: () => controller.checkPermission(),
         child: Icon(Icons.qr_code),
       ),
     );

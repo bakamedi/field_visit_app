@@ -16,15 +16,22 @@ abstract class StoredUserModel with _$StoredUserModel {
 
   const factory StoredUserModel({
     @Default('') String routeName,
+    @Default('') String role,
     required PermissionModel permission,
   }) = _UserModel;
 
   factory StoredUserModel.fromJson(Map<String, dynamic> json) =>
       _$StoredUserModelFromJson(json);
 
-  static StoredUserModel get initialState =>
-      StoredUserModel(permission: PermissionModel.empty(), routeName: '');
+  static StoredUserModel get initialState => StoredUserModel(
+    role: '',
+    permission: PermissionModel.empty(),
+    routeName: '',
+  );
 
-  static StoredUserModel empty() =>
-      StoredUserModel(permission: PermissionModel.empty(), routeName: '');
+  static StoredUserModel empty() => StoredUserModel(
+    role: '',
+    permission: PermissionModel.empty(),
+    routeName: '',
+  );
 }

@@ -7,5 +7,6 @@ void goHome() {
     return;
   }
   final String homeRoute = controller.state.selectedRole!.routeName;
+  controller.setSelectedRoleNull();
   RouterUtil.pushReplacement(homeRoute);
 }

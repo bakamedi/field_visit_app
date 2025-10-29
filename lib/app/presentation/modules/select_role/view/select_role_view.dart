@@ -80,8 +80,9 @@ class SelectRoleView extends ConsumerWidget {
               ),
             ),
             child: Text(
-              'Ingresar',
-              //'Selecciona un perfil' : 'Ingresar',
+              selectRoleController.enabledContinueButton
+                  ? 'Ingresar'
+                  : 'Selecciona un perfil',
             ),
           ),
         ).padding(EdgeInsets.symmetric(horizontal: 10)),
