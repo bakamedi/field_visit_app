@@ -66,7 +66,7 @@ class SelectRoleView extends ConsumerWidget {
         bottom: true,
         minimum: const EdgeInsets.only(
           top: 16,
-          bottom: 80,
+          bottom: 45,
           left: 20,
           right: 20,
         ),
