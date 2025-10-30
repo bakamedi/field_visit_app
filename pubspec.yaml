@@ -53,6 +53,7 @@ dependencies:
   geolocator: ^14.0.2
   flutter_map: ^8.2.2
   latlong2: ^0.9.1
+  timeago: ^3.7.1
 
 dev_dependencies:
   flutter_test:

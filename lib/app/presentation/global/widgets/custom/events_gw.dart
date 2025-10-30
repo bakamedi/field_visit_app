@@ -30,7 +30,7 @@ class EventsGW extends StatelessWidget {
       itemBuilder: (_, index) {
         final event = events[index];
         final code = event.code ?? 'Sin código';
-        final date = event.createdAt?.getFormattedDate() ?? 'Sin fecha';
+        final date = event.createdAt ?? 'Sin fecha';
 
         return Container(
           decoration: BoxDecoration(
@@ -63,7 +63,7 @@ class EventsGW extends StatelessWidget {
                   ),
                 ),
                 trailing: Text(
-                  date,
+                  date.toRelativeTime(),
                   style: const TextStyle(color: Colors.grey, fontSize: 14),
                 ),
               ),

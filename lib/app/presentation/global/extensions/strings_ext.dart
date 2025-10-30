@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 extension StringExt on String {
   bool get isValidEmail {
@@ -38,5 +39,14 @@ extension StringExt on String {
     String formattedDate = DateFormat('MM/dd/yyyy').format(date);
 
     return formattedDate;
+  }
+
+  String toRelativeTime({String locale = 'es'}) {
+    try {
+      final date = DateTime.parse(this);
+      return timeago.format(date, locale: locale);
+    } catch (e) {
+      return 'Invalid date';
+    }
   }
 }
