@@ -1,4 +1,5 @@
 import 'package:field_visit_app/app/presentation/global/extensions/widgets_ext.dart';
+import 'package:field_visit_app/app/presentation/global/widgets/btns/icon_filter_btn_gw.dart';
 import 'package:field_visit_app/app/presentation/global/widgets/custom/events_gw.dart';
 import 'package:field_visit_app/app/presentation/global/widgets/custom/menu_drawer.dart';
 import 'package:field_visit_app/app/presentation/modules/supervisor/controller/supervisor_controllador.dart';
@@ -14,7 +15,16 @@ class SupervisorView extends ConsumerWidget {
     final state = controller.state;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Supervisor')),
+      appBar: AppBar(
+        title: const Text('Supervisor'),
+        actions: [
+          IconFilterBtnGW(
+            onTap: controller.onChangeFilter,
+            filter: state.filter,
+          ),
+          20.w,
+        ],
+      ),
       drawer: const MenuDrawer(),
       body: state.loading
           ? const CircularProgressIndicator.adaptive().center

@@ -8,6 +8,7 @@ abstract class SupervisorState with _$SupervisorState {
   const SupervisorState._();
 
   const factory SupervisorState({
+    @Default(false) bool filter,
     @Default([]) List<ItemModel> events,
     @Default(true) bool loading,
   }) = _SupervisorState;
