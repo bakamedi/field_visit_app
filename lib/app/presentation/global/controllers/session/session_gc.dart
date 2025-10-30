@@ -17,9 +17,16 @@ class SessionGC extends StateNotifier<SessionState> {
   SessionGC(
     super.initialState, {
     required UserPreferencesRepository userPreferencesRepository,
-  }) : _userPreferencesRepository = userPreferencesRepository;
+  }) : _userPreferencesRepository = userPreferencesRepository {
+    _onInit();
+  }
 
   final UserPreferencesRepository _userPreferencesRepository;
+
+  void _onInit() async {
+    final userPrefs = await _userPreferencesRepository.getUserPreferences();
+    toggleDarkMode(userPrefs.isDarkMode);
+  }
 
   void toggleDarkMode(bool isDarkMode) {
     state = state.copyWith(
