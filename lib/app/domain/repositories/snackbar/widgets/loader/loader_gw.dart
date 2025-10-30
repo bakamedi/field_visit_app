@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer.dart';
 
-import '../../../../../core/adaptative_screen/adaptative_screen.dart';
 import '../../../../../presentation/global/controllers/loader/loader_gc.dart';
 
 class LoaderGW extends ConsumerWidget {
@@ -10,8 +9,6 @@ class LoaderGW extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, BuilderRef ref) {
-    final adaptativeScreen = AdaptativeScreen(context);
-
     final loaderGC = ref.watch(loaderGP);
 
     return loaderGC.loading
@@ -29,7 +26,7 @@ class LoaderGW extends ConsumerWidget {
                         child: ColoredBox(
                           color: Colors.black.withValues(alpha: 0.4),
                           child: Transform.scale(
-                            scale: adaptativeScreen.dp(0.25),
+                            scale: 1.2,
                             child: const Center(
                               child: CircularProgressIndicator.adaptive(
                                 backgroundColor: Colors.black,
