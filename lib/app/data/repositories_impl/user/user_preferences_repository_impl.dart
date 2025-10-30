@@ -12,6 +12,9 @@ class UserPreferencesRepositoryImpl extends UserPreferencesRepository {
     final preferencesString = await _storageProvider.readValue(
       GlobalNameStorageKeyUtils.PREFERENCES,
     );
+    if (preferencesString.isEmpty) {
+      return Preference.empty();
+    }
     return preferenceFromJson(preferencesString);
   }
 

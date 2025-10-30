@@ -45,6 +45,13 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+	<key>NSLocationUsageDescription</key>
+	<string>Tu ubicación es necesaria en dispositivos más antiguos.</string>
+	
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Necesitamos tu ubicación mientras usas la app.</string>
+
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs camera access to scan QR codes</string>
 
