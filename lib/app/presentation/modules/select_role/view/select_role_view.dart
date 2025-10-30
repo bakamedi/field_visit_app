@@ -53,7 +53,7 @@ class SelectRoleView extends ConsumerWidget {
             ),
 
             const Spacer(),
-            Text(
+            const Text(
               'Si necesitas cambiar de perfil más tarde, podrás hacerlo desde la configuración.',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 12),
@@ -87,7 +87,7 @@ class SelectRoleView extends ConsumerWidget {
                   : 'Selecciona un perfil',
             ),
           ),
-        ).padding(EdgeInsets.symmetric(horizontal: 10)),
+        ).padding(const EdgeInsets.symmetric(horizontal: 10)),
       ),
     );
   }

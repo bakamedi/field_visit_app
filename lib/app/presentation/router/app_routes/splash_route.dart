@@ -9,7 +9,7 @@ class SplashRoute {
       path: path,
       name: path,
       builder: (context, _) {
-        return SplashView();
+        return const SplashView();
       },
     );
   }

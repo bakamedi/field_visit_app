@@ -12,7 +12,9 @@ class GeolocationRepositoryImpl extends GeolocationRepository {
       final position = await Geolocator.getCurrentPosition();
       return Either.right(LatLng(position.latitude, position.longitude));
     } catch (e) {
-      return Either.left(GeolocatorFailure('Could not get current location'));
+      return const Either.left(
+        GeolocatorFailure('Could not get current location'),
+      );
     }
   }
 }

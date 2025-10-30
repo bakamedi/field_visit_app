@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 class StaticMapThumbnailW extends StatelessWidget {
+  const StaticMapThumbnailW({super.key, required this.lat, required this.lng});
   final double lat;
   final double lng;
-
-  const StaticMapThumbnailW({super.key, required this.lat, required this.lng});
 
   @override
   Widget build(BuildContext context) {

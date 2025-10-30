@@ -3,13 +3,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class MapThumbnailGW extends StatelessWidget {
-  final double height;
-  final double lat;
-  final double lng;
-  final double markerHeight;
-  final double markerWidth;
-  final double iconMarkerSize;
-
   const MapThumbnailGW({
     super.key,
     required this.lat,
@@ -19,6 +12,12 @@ class MapThumbnailGW extends StatelessWidget {
     this.markerWidth = 30,
     this.iconMarkerSize = 30,
   });
+  final double height;
+  final double lat;
+  final double lng;
+  final double markerHeight;
+  final double markerWidth;
+  final double iconMarkerSize;
 
   @override
   Widget build(BuildContext context) {

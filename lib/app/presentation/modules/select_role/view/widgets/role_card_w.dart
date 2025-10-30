@@ -2,12 +2,6 @@ import 'package:field_visit_app/app/presentation/global/extensions/widgets_ext.d
 import 'package:flutter/material.dart';
 
 class RoleCardW extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String subtitle;
-  final bool isSelected;
-  final VoidCallback onTap;
-
   const RoleCardW({
     super.key,
     required this.icon,
@@ -16,6 +10,11 @@ class RoleCardW extends StatelessWidget {
     this.isSelected = false,
     required this.onTap,
   });
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final bool isSelected;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {

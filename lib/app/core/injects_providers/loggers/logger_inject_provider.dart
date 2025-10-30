@@ -2,7 +2,9 @@ import 'package:flutter_meedu/providers.dart';
 import 'package:logger/logger.dart';
 
 final _globalLogger = Logger(
-  level: bool.fromEnvironment('dart.vm.product') ? Level.warning : Level.debug,
+  level: const bool.fromEnvironment('dart.vm.product')
+      ? Level.warning
+      : Level.debug,
   printer: PrettyPrinter(
     methodCount: 1,
     errorMethodCount: 3,

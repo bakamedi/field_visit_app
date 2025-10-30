@@ -78,11 +78,11 @@ class QrScanView extends ConsumerWidget {
           ),
 
           SafeArea(
-            child: Align(
+            child: const Align(
               alignment: Alignment.topLeft,
               child: CircleAvatar(
                 backgroundColor: Colors.black54,
-                child: const BackButton(),
+                child: BackButton(),
               ),
             ).padding(const EdgeInsets.all(16)),
           ),

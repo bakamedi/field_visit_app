@@ -9,7 +9,7 @@ class QrScanRoute {
       path: path,
       name: path,
       builder: (context, _) {
-        return QrScanView();
+        return const QrScanView();
       },
     );
   }

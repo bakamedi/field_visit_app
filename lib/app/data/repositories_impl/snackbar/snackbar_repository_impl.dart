@@ -8,7 +8,7 @@ class SnackbarRepositoryImpl extends SnackbarRepository {
   void showSnackbar(String message) {
     ScaffoldMessenger.of(_context).showSnackBar(
       SnackBar(
-        content: Text(message, style: TextStyle(color: Colors.white)),
+        content: Text(message, style: const TextStyle(color: Colors.white)),
         duration: const Duration(milliseconds: 2000),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(

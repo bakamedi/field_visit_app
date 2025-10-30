@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ScannerOverlayShapeW extends ShapeBorder {
-  final Color borderColor;
-  final double borderRadius;
-  final double cutOutSize;
-
   const ScannerOverlayShapeW({
     required this.borderColor,
     required this.borderRadius,
     required this.cutOutSize,
   });
+  final Color borderColor;
+  final double borderRadius;
+  final double cutOutSize;
 
   @override
   EdgeInsetsGeometry get dimensions => EdgeInsets.zero;
