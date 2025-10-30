@@ -2,6 +2,7 @@ import 'package:field_visit_app/app/core/defs/type_defs.dart';
 import 'package:field_visit_app/app/core/helpers/either/either.dart';
 import 'package:field_visit_app/app/core/helpers/failure.dart';
 import 'package:field_visit_app/app/domain/inject_repository.dart';
+import 'package:field_visit_app/app/domain/models/items/item_model.dart';
 import 'package:field_visit_app/app/domain/models/success.dart';
 import 'package:field_visit_app/app/domain/repositories/index_repositories.dart';
 import 'package:field_visit_app/app/presentation/modules/technician/controller/technician_state.dart';
@@ -71,5 +72,16 @@ class TechnicianController extends StateNotifier<TechnicianState> {
       resultsPermission: {'location': cameraGranted},
     );
     return Either.right(const Success());
+  }
+
+  void onChangeFilter() {
+    final sortedEvents = List<ItemModel>.from(state.events);
+    sortedEvents.sort((a, b) {
+      final dateA = DateTime.tryParse(a.createdAt ?? '');
+      final dateB = DateTime.tryParse(b.createdAt ?? '');
+      if (dateA == null || dateB == null) return 0;
+      return state.filter ? dateA.compareTo(dateB) : dateB.compareTo(dateA);
+    });
+    state = state.copyWith(filter: !state.filter, events: sortedEvents);
   }
 }

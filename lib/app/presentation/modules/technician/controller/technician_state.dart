@@ -8,10 +8,10 @@ abstract class TechnicianState with _$TechnicianState {
   const TechnicianState._();
 
   const factory TechnicianState({
+    @Default(false) bool filter,
     @Default([]) List<ItemModel> events,
     @Default(true) bool loading,
   }) = _TechnicianState;
 
   static TechnicianState get initialState => const TechnicianState();
 }
-

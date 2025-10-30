@@ -1,6 +1,6 @@
 import 'package:field_visit_app/app/presentation/global/extensions/widgets_ext.dart';
 import 'package:field_visit_app/app/presentation/global/widgets/custom/events_gw.dart';
-import 'package:field_visit_app/app/presentation/global/widgets/menu_drawer.dart';
+import 'package:field_visit_app/app/presentation/global/widgets/custom/menu_drawer.dart';
 import 'package:field_visit_app/app/presentation/modules/supervisor/controller/supervisor_controllador.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer/consumer_widget.dart';
