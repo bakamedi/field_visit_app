@@ -1,4 +1,3 @@
-import 'package:field_visit_app/app/core/helpers/either/either.dart';
 import 'package:field_visit_app/app/presentation/global/utils/router_util.dart';
 import 'package:field_visit_app/app/presentation/global/utils/snackbar_util.dart';
 import 'package:field_visit_app/app/presentation/modules/technician/controller/technician_controller.dart';
@@ -9,10 +8,8 @@ void goQr() async {
 
   final result = await technicianController.checkCameraPermission();
 
-  result.map(
-    left: (failure) => SnackbarUtil.showError(failure.value.message),
-    right: (success) {
-      RouterUtil.push(QrScanRoute.path);
-    },
+  result.fold(
+    (failure) => SnackbarUtil.showError(failure.message),
+    (success) => RouterUtil.push(QrScanRoute.path),
   );
 }

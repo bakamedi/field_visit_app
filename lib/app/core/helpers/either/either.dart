@@ -1,26 +1,55 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+// either.dart
 
-part 'either.freezed.dart';
+abstract class Either<L, R> {
+  const Either();
 
-@freezed
-abstract class Either<L, R> with _$Either<L, R> {
-  const Either._();
-  const factory Either.left(L value) = _Left<L, R>;
-  const factory Either.right(R value) = _Right<L, R>;
+  T fold<T>(T Function(L l) failure, T Function(R r) success);
 
-  T whenIsRight<T>(T Function(R value) callback) {
-    return when(
-      left: (_) =>
-          throw AssertionError('whenIsRight was called during a Left value'),
-      right: callback,
-    );
-  }
+  bool isLeft();
+  bool isRight();
 
-  T whenIsLeft<T>(T Function(L value) callback) {
-    return when(
-      left: callback,
-      right: (_) =>
-          throw AssertionError('whenIsLeft was called during a Right value'),
-    );
-  }
+  L? getLeft();
+  R? getRight();
+}
+
+class Left<L, R> extends Either<L, R> {
+  const Left(this._value);
+  final L _value;
+
+  @override
+  T fold<T>(T Function(L l) failure, T Function(R r) success) =>
+      failure(_value);
+
+  @override
+  bool isLeft() => true;
+
+  @override
+  bool isRight() => false;
+
+  @override
+  L getLeft() => _value;
+
+  @override
+  R? getRight() => null;
+}
+
+class Right<L, R> extends Either<L, R> {
+  const Right(this._value);
+  final R _value;
+
+  @override
+  T fold<T>(T Function(L l) failure, T Function(R r) success) =>
+      success(_value);
+
+  @override
+  bool isLeft() => false;
+
+  @override
+  bool isRight() => true;
+
+  @override
+  L? getLeft() => null;
+
+  @override
+  R getRight() => _value;
 }

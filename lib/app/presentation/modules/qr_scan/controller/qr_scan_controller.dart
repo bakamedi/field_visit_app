@@ -71,11 +71,9 @@ class QrScanController extends StateNotifier<QrScanState> {
         createdAt: DateTime.now().toIso8601String(),
       );
       await _eventRepository.addEvent(event);
-      return const Either.right(Success());
+      return const Right(Success());
     } catch (e) {
-      return Either.left(
-        DatabaseFailure('Error al crear el evento: ${e.toString()}'),
-      );
+      return Left(DatabaseFailure('Error al crear el evento: ${e.toString()}'));
     }
   }
 

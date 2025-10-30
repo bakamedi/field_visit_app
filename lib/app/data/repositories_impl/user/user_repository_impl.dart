@@ -36,14 +36,12 @@ class UserRepositoryImpl extends UserRepository {
   FutureEither<FailureViewData, Result> saveUser(StoredUserModel? user) async {
     try {
       if (user == null) {
-        return Either.left(
-          mapFailureToView(const StorageFailure('Usuario nulo')),
-        );
+        return Left(mapFailureToView(const StorageFailure('Usuario nulo')));
       }
       await _storageProvider.writeValue(_storageName, userToJson(user));
-      return const Either.right(Success());
+      return const Right(Success());
     } catch (e) {
-      return Either.left(
+      return Left(
         mapFailureToView(const StorageFailure('No se pudo guardar el usuario')),
       );
     }
@@ -55,7 +53,7 @@ class UserRepositoryImpl extends UserRepository {
   }) async {
     final userString = await _storageProvider.readValue(_storageName);
     if (userString.isEmpty) {
-      return Either.left(
+      return Left(
         mapFailureToView(const StorageFailure('No hay usuario almacenado')),
       );
     }
@@ -68,9 +66,9 @@ class UserRepositoryImpl extends UserRepository {
     );
     try {
       await _storageProvider.writeValue(_storageName, userToJson(updatedUser));
-      return const Either.right(Success());
+      return const Right(Success());
     } catch (e) {
-      return Either.left(
+      return Left(
         mapFailureToView(
           const StorageFailure(
             'No se pudo actualizar los permisos del usuario',
@@ -84,9 +82,9 @@ class UserRepositoryImpl extends UserRepository {
   FutureEither<FailureViewData, Result> updateUser(StoredUserModel user) async {
     try {
       await _storageProvider.writeValue(_storageName, userToJson(user));
-      return const Either.right(Success());
+      return const Right(Success());
     } catch (e) {
-      return Either.left(
+      return Left(
         mapFailureToView(
           const StorageFailure('No se pudo actualizar el usuario'),
         ),

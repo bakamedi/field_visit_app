@@ -54,12 +54,12 @@ class TechnicianController extends StateNotifier<TechnicianState> {
       Permission.camera,
     );
     if (!cameraGranted) {
-      return const Either.left(PermissionFailure('Permiso de cámara denegado'));
+      return const Left(PermissionFailure('Permiso de cámara denegado'));
     }
     await _userRepository.updatePermission(
       resultsPermission: {'camera': cameraGranted},
     );
-    return const Either.right(Success());
+    return const Right(Success());
   }
 
   FutureEither<Failure, Result> checkLocationPermission() async {
@@ -67,14 +67,12 @@ class TechnicianController extends StateNotifier<TechnicianState> {
       Permission.locationWhenInUse,
     );
     if (!cameraGranted) {
-      return const Either.left(
-        PermissionFailure('Permiso de location denegado'),
-      );
+      return const Left(PermissionFailure('Permiso de location denegado'));
     }
     await _userRepository.updatePermission(
       resultsPermission: {'location': cameraGranted},
     );
-    return const Either.right(Success());
+    return const Right(Success());
   }
 
   void onChangeFilter() {

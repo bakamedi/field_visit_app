@@ -10,11 +10,9 @@ class GeolocationRepositoryImpl extends GeolocationRepository {
   FutureEither<Failure, LatLng?> getCurrentLocation() async {
     try {
       final position = await Geolocator.getCurrentPosition();
-      return Either.right(LatLng(position.latitude, position.longitude));
+      return Right(LatLng(position.latitude, position.longitude));
     } catch (e) {
-      return const Either.left(
-        GeolocatorFailure('Could not get current location'),
-      );
+      return const Left(GeolocatorFailure('Could not get current location'));
     }
   }
 }
