@@ -94,6 +94,7 @@ class SelectRoleController extends StateNotifier<SelectRoleState> {
     final updUser = user.copyWith(
       id: state.selectedRole!.id,
       role: state.selectedRole!.role,
+      name: state.selectedRole!.title,
       routeName: state.selectedRole!.routeName,
     );
     if (user.isEmpty) {

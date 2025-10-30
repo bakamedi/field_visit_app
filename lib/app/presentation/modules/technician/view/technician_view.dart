@@ -1,9 +1,9 @@
 import 'package:field_visit_app/app/presentation/global/controllers/snackbar/snackbar_gc.dart';
 import 'package:field_visit_app/app/presentation/global/extensions/widgets_ext.dart';
+import 'package:field_visit_app/app/presentation/global/widgets/custom/events_gw.dart';
 import 'package:field_visit_app/app/presentation/global/widgets/menu_drawer.dart';
 import 'package:field_visit_app/app/presentation/modules/technician/controller/technician_controller.dart';
 import 'package:field_visit_app/app/presentation/modules/technician/utils/go_qr.dart';
-import 'package:field_visit_app/app/presentation/modules/technician/view/widgets/technician_body_w.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/consumer.dart';
 
@@ -24,8 +24,8 @@ class TechnicianView extends ConsumerWidget {
       body: state.loading
           ? const CircularProgressIndicator.adaptive().center
           : state.events.isEmpty
-              ? const Text('No hay visitas registradas.').center
-              : TechnicianBodyW(events: state.events),
+          ? const Text('No hay visitas registradas.').center
+          : EventsGW(events: state.events),
       floatingActionButton: FloatingActionButton(
         onPressed: () => goQr(),
         child: const Icon(Icons.qr_code),

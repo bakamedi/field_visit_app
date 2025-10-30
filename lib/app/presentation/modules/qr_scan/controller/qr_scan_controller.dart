@@ -67,6 +67,7 @@ class QrScanController extends StateNotifier<QrScanState> {
         lat: lat,
         lng: lng,
         userId: user.id,
+        name: user.name,
         createdAt: DateTime.now().toIso8601String(),
       );
       await _eventRepository.addEvent(event);

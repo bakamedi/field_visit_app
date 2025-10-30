@@ -28,14 +28,14 @@ class TechnicianController extends StateNotifier<TechnicianState> {
   }) : _permissionRepository = permissionRepository,
        _userRepository = userRepository,
        _eventRepository = eventRepository {
-    init();
+    _onInit();
   }
 
   final PermissionRepository _permissionRepository;
   final UserRepository _userRepository;
   final EventRepository _eventRepository;
 
-  Future<void> init() async {
+  Future<void> _onInit() async {
     await checkLocationPermission();
     await loadEvents();
   }

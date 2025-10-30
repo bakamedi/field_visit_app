@@ -4,10 +4,11 @@ import 'package:field_visit_app/app/presentation/global/extensions/widgets_ext.d
 import 'package:field_visit_app/app/presentation/modules/technician/utils/go_detail.dart';
 import 'package:flutter/material.dart';
 
-class TechnicianBodyW extends StatelessWidget {
-  const TechnicianBodyW({super.key, required this.events});
+class EventsGW extends StatelessWidget {
+  const EventsGW({super.key, required this.events, this.showName = false});
 
   final List<ItemModel> events;
+  final bool showName;
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +67,7 @@ class TechnicianBodyW extends StatelessWidget {
                   style: const TextStyle(color: Colors.grey, fontSize: 14),
                 ),
               ),
+              if (showName) Text('Registro del: ${event.name}'),
             ],
           ).padding(const EdgeInsets.all(12)),
         );

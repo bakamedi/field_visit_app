@@ -29,15 +29,17 @@ class MapThumbnailGW extends StatelessWidget {
         child: FlutterMap(
           options: MapOptions(
             initialCenter: LatLng(lat, lng),
-            initialZoom: 14,
+            initialZoom: 18,
+            maxZoom: 18,
+            minZoom: 3,
             interactionOptions: const InteractionOptions(
-              flags: InteractiveFlag.none,
+              flags: InteractiveFlag.drag,
             ),
           ),
           children: [
             TileLayer(
               urlTemplate:
-                  'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png',
+                  'https://api.maptiler.com/maps/streets-v4/{z}/{x}/{y}.png?key=nQW5Ivm60DWq3IckD8D7',
               userAgentPackageName: 'com.example.field_visit_app',
             ),
             MarkerLayer(

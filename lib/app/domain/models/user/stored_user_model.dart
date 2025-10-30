@@ -18,6 +18,7 @@ abstract class StoredUserModel with _$StoredUserModel {
     @Default('') String id,
     @Default('') String routeName,
     @Default('') String role,
+    @Default('') String name,
     required PermissionModel permission,
   }) = _UserModel;
 
@@ -27,6 +28,7 @@ abstract class StoredUserModel with _$StoredUserModel {
   static StoredUserModel get initialState => StoredUserModel(
     id: '',
     role: '',
+    name: '',
     permission: PermissionModel.empty(),
     routeName: '',
   );
@@ -34,6 +36,7 @@ abstract class StoredUserModel with _$StoredUserModel {
   static StoredUserModel empty() => StoredUserModel(
     id: '',
     role: '',
+    name: '',
     permission: PermissionModel.empty(),
     routeName: '',
   );

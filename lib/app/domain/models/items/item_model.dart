@@ -12,6 +12,7 @@ abstract class ItemModel with _$ItemModel {
     String? code,
     double? lat,
     double? lng,
+    String? name,
     String? createdAt,
     String? userId,
   }) = _ItemModel;
