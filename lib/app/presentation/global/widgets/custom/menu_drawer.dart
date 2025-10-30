@@ -1,20 +1,11 @@
 import 'package:field_visit_app/app/presentation/global/controllers/session/session_gc.dart';
+import 'package:field_visit_app/app/presentation/global/extensions/widgets_ext.dart';
 import 'package:field_visit_app/app/presentation/global/utils/router_util.dart';
 import 'package:field_visit_app/app/presentation/router/app_routes/select_role_route.dart';
 import 'package:flutter/material.dart';
 
-class MenuDrawer extends StatefulWidget {
+class MenuDrawer extends StatelessWidget {
   const MenuDrawer({super.key});
-
-  @override
-  State<MenuDrawer> createState() => _MenuDrawerState();
-}
-
-class _MenuDrawerState extends State<MenuDrawer> {
-  @override
-  initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,23 +33,20 @@ class _MenuDrawerState extends State<MenuDrawer> {
             ),
           ),
 
-          // Contenido principal del menú
-          Expanded(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: [
-                SwitchListTile.adaptive(
-                  secondary: const Icon(Icons.dark_mode_outlined),
-                  title: const Text('Modo oscuro'),
-                  value: isDarkMode,
-                  onChanged: (value) {
-                    final controller = sessionGP.read();
-                    controller.toggleDarkMode(value);
-                  },
-                ),
-              ],
-            ),
-          ),
+          ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              SwitchListTile.adaptive(
+                secondary: const Icon(Icons.dark_mode_outlined),
+                title: const Text('Modo oscuro'),
+                value: isDarkMode,
+                onChanged: (value) {
+                  final controller = sessionGP.read();
+                  controller.toggleDarkMode(value);
+                },
+              ),
+            ],
+          ).expanded,
 
           SafeArea(
             top: false,
